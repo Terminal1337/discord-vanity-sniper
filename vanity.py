@@ -18,6 +18,7 @@ def sniper_proxied():
     r = requests.patch('https://discord.com/api/v9/guilds/'+server_id+'/vanity-url',proxies="http://"+random.choice(proxy),headers={'Authorization': token},json={'code': vanity})
     if r.status_code == 200:
         print(Fore.GREEN+"Vanity Succesfully Sniped"+ Fore.RESET)
+        sys.exit()
     else:
         print(Fore.RED+"Failed to snipe vanity"+Fore.RESET)
 
