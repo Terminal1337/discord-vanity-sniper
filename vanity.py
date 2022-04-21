@@ -78,6 +78,7 @@ if token_type == "1":
         while True:
             sniper_proxied()
     elif pro == "2":
+        token = open('tokens.txt').read().split('\n')
         while True:
             sniper_proxied_multi()
 elif token_type == "2":
@@ -85,6 +86,7 @@ elif token_type == "2":
         while True:
             sniper_proxyless()
     elif pro == "2":
+         token = open('tokens.txt').read().split('\n')
         while True:
             sniper_proxyless_multi()
 else:
