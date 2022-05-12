@@ -15,7 +15,7 @@ def cls():
     os.system([linux,windows][os.name=="nt"])
 
 def sniper_proxied():
-    r = httpx.get('https://discord.com/api/v9/invites/'+str(vanity)+str(vanity),proxies="http://"+random.choice(proxy),headers={'Authorization': token},json={'code': vanity})
+    r = httpx.get('https://discord.com/api/v9/invites/'+str(vanity),proxies="http://"+random.choice(proxy))
     if r.status_code == 404:
 
         r = httpx.patch('https://discord.com/api/v9/guilds/'+server_id+'/vanity-url',headers={'Authorization': token},json={'code': vanity})
@@ -29,7 +29,7 @@ def sniper_proxied():
 
     
 def sniper_proxyless():
-    r = httpx.get('https://discord.com/api/v9/invites/'+str(vanity)+server_id+'/vanity-url',headers={'Authorization': token},json={'code': vanity})
+    r = httpx.get('https://discord.com/api/v9/invites/'+str(vanity))
     if r.status_code == 404:
 
         r = httpx.patch('https://discord.com/api/v9/guilds/'+server_id+'/vanity-url',headers={'Authorization': token},json={'code': vanity})
@@ -40,7 +40,7 @@ def sniper_proxyless():
     else:
         pass
 def sniper_proxyless_multi():
-    r = httpx.get('https://discord.com/api/v9/invites/'+str(vanity)+server_id+'/vanity-url',headers={'Authorization': random.choice(token)},json={'code': vanity})
+    r = httpx.get('https://discord.com/api/v9/invites/'+str(vanity))
     if r.status_code == 404:
 
         r = httpx.patch('https://discord.com/api/v9/guilds/'+server_id+'/vanity-url',headers={'Authorization': random.choice(token)},json={'code': vanity})
@@ -51,7 +51,7 @@ def sniper_proxyless_multi():
     else:
         pass
 def sniper_proxied_multi():
-    r = httpx.get('https://discord.com/api/v9/guilds/'+server_id+'/vanity-url',proxies=random.choice(proxy),headers={'Authorization': random.choice(token)},json={'code': vanity})
+    r = httpx.get('https://discord.com/api/v9/guilds/'+server_id+'/vanity-url',proxies=random.choice(proxy))
     if r.status_code == 404:
 
         r = httpx.patch('https://discord.com/api/v9/guilds/'+server_id+'/vanity-url',proxies=random.choice(proxy),headers={'Authorization': random.choice(token)},json={'code': vanity})
@@ -87,7 +87,7 @@ elif token_type == "2":
             sniper_proxyless()
     elif pro == "2":
          token = open('tokens.txt').read().split('\n')
-        while True:
+         while True:
             sniper_proxyless_multi()
 else:
     print(Fore.RED+"INVALID INPUT"+Fore.RESET)
